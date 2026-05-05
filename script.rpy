@@ -18,8 +18,8 @@ init python:
     PYTHON_EXE = os.path.join(CONDA_ENV_ROOT, "bin/python" if os.name != "nt" else "python.exe")
 
     # Full path to the server script (put it next to your Ren'Py project)
-    SERVER_SCRIPT = os.path.abspath(os.path.join(config.basedir,
-                                                 "..", "nlp_service.py"))
+    #SERVER_SCRIPT = os.path.abspath(os.path.join(config.basedir,"..", "nlp_service.py"))
+    SERVER_SCRIPT = '/Users/sasha/personal_projects/ancient_near_east_novel/nlp_service.py'
 
     SERVER_PROC = None
 
@@ -45,33 +45,37 @@ init python:
 
     # Register callbacks so Ren'Py starts the server when the game launches
     # and stops it when the player quits.
+    start_nlp_server()
     renpy.config.start_callbacks.append(start_nlp_server)
     renpy.config.quit_callbacks.append(stop_nlp_server)
 
     # Also make sure the server is killed if Python exits unexpectedly.
     atexit.register(stop_nlp_server)
 
-#init python:
-#    import json, requests
+init python:
+    import json, requests
 
-#    NLP_ENDPOINT = "http://127.0.0.1:8000/reply"
+    NLP_ENDPOINT = "http://127.0.0.1:8000/reply"
 
-#    def get_nlp_reply(user_text):
-#        """
+    def get_nlp_reply(user_text):
+        """
 #        Sends *user_text* to the external FastAPI server and returns the reply.
 #        If the server is unreachable, returns a safe fallback string.
 #        """
-#        try:
-#            payload = {"text": user_text}
-#            # `timeout` prevents the game from hanging forever.
-#            r = requests.post(NLP_ENDPOINT, json=payload, timeout=2.0)
-#            r.raise_for_status()               # raise on HTTP error
-#            data = r.json()
-#            return data.get("reply", "Sorry, I didn’t understand.")
-#        except Exception as e:
-#            # You can log `e` to a file for debugging.
-#            renpy.log("NLP service error: {}".format(e))
-#            return "Sorry, I’m having trouble answering right now."
+        try:
+            payload = {"text": user_text}
+            # `timeout` prevents the game from hanging forever.
+            r = requests.post(NLP_ENDPOINT, json=payload, timeout=2.0)
+            r.raise_for_status()               # raise on HTTP error
+            data = r.json()
+            #return data.get("reply", "Sorry, I didn’t understand.")
+            reply = data.get("reply", "Sorry, I didn’t understand.")
+            jump_loc = data.get("jump_loc")
+            return reply, jump_loc
+        except Exception as e:
+            # You can log `e` to a file for debugging.
+            renpy.log("NLP service error: {}".format(e))
+            return "Sorry, I’m having trouble answering right now.", None
 
 # The game starts here.
 
@@ -108,8 +112,9 @@ label start:
         else:
             silence = False
 
-    $ bot_reply = get_nlp_reply(answer)
-    shibtu_talks "[bot_reply]"
+    $ bot_reply, jump_loc = get_nlp_reply(answer)
+    muranu_talks "[bot_reply]"
+    jump expression jump_loc
 
     if silence == True:
         menu:

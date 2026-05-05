@@ -18,7 +18,7 @@ CANNED = [
     "Do not be mad at me! I am your friend.",
     "I am sorry you do not tell me."
 ]
-
+jumps = ['market', 'market', 'market', 'market']
 
 CANNED_EMB = model.encode(CANNED, normalize_embeddings=True)
 
@@ -36,7 +36,8 @@ def get_reply(payload: Query):
 
     return {
         "reply": CANNED[best_idx],
-        "score": float(sims[best_idx])
+        "score": float(sims[best_idx]),
+        "jump_loc": jumps[best_idx]
     }
 
 # Run the server, localhost
