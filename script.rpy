@@ -16,6 +16,9 @@ define scribe_1_talks = Character("First scribe")
 define scribe_2_talks = Character("Second scribe")
 image scribes = "scribes.png"
 
+define ahatabisha_talks = Character("Ahat-abisha")
+image Ahatabisha = "Ahatabisha.png"
+
 init python:
     import os, subprocess, sys, time, atexit
     CONDA_ENV_ROOT = "/Users/sasha/miniconda3/envs/text_process_env"
@@ -242,6 +245,19 @@ label argument_with_scribes:
 
     shibtu_talks "O most respectable lords temple scribes, I beg your pardon that I dare to bother you and interrupt your wisest conversation. But I thought I might know what happened with the prices."
     scribe_1_talks "Who is this little girl? What is she talking about? What can she know? It is funny!"
+    shibtu_talks "My lords, I believe prices rise when the water is green, because the water is green after long periods of hot weather. The tiny plants grow in the moat then. "
+    shibtu_talks"And when the weather is hot, the villagers prefer to stay at home, instead of coming to the city with their grain, wool, meat and other products. "
+    shibtu_talks "But today, even though it was being hot for a few days, the caravans arrived from other cities and countries. Our merchants do not want to completely lose the customers, that is why they keep the prices to compete."
+    scribe_1_talks "Why would they do it? Silly little girl, do you think you are smarter than me, Nabu-apla-usur, temple scribe, or than our lord, temple astronomer Anu-aba-uter? In the temple, we observe divine omens for years, and we know what they mean. "
+    scribe_1_talks "A mortal man shall not try to find the reasons of the gods’ actions, as they are uncognizable. And who are you? Have you at least worked at the temple? Of course not!" 
+    scribe_1_talks "You look like a spoiled girl from a rich family. Your parents did not educate you right, so you become a polite and obedient girl, good for marriage and pleasant to elders. Who is your father?"
+
+    show Ahatabisha at right with moveinright
+
+    scribe_1_talks "Our lady Ahat-Abisha!" 
+    scribe_2_talks "She recently sent her prophecy to the king! See that she cut the edge of her garment and her loci to send as an authenticity note." 
+    ahatabisha_talks "Good morning, scribes, let Marduk keep you in good health. I wish to talk to this girl. Let Marduk bless you in your deeds. "
+
 
     return
 
