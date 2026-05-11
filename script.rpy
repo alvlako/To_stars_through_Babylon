@@ -258,6 +258,49 @@ label argument_with_scribes:
     scribe_2_talks "She recently sent her prophecy to the king! See that she cut the edge of her garment and her loci to send as an authenticity note." 
     ahatabisha_talks "Good morning, scribes, let Marduk keep you in good health. I wish to talk to this girl. Let Marduk bless you in your deeds. "
 
+    hide scribes
+
+
+    ahatabisha_talks "What is your name, my young lady?"
+    shibtu_talks "I am Shibtu, my lady, let Inanna bless you with perfect health." 
+    ahatabisha_talks "Shibtu, I have heard how you talked to these scribes. Who told you all of this?"
+    shibtu_talks "No one, my lady. I have learned it myself. On hot nights it is harder for me to observe stars. I do not like these days. That is why I remember everything about such days very well. I just noticed what seems to be related." 
+    ahatabisha_talks "That is very smart, Shibtu. You probably understand market prices better than any of those scribes who record them but do not even trouble themselves to think for a moment about what they write down. You should forgive them for their ignorance."
+    ahatabisha_talks "I am Ahat-Abisha, I am a high priestess of Ishtar from Ishtar temple. I shall please myself talking to you a bit more. Would you go with me to the tavern?"
+
+    menu:
+        "Do not agree, no time to talk":
+            shibtu_talks "I beg you forgiveness, my blessed lady, but I do not have time to talk. I have an important business to do. "
+            jump tavern # change
+        "Agree":
+            shibtu_talks "Oh my lady, that shall be a great blessing for me, to have the joy of talking to you."
+            jump tavern
+
+
+
+label tavern:
+
+    scene tavern_interior
+    show Shibtu at left with moveinleft
+    show Ahatabisha at right with moveinright
+
+    ahatabisha_talks "Tanatha, the owner of this tavern, is a very respectable woman. She always has everything in order, and no ugly fights ever happen at her place. I will ask her to send us servants with the food."
+    shibtu_talks "As you wish, my lady Ahat-Abisha."
+    ahatabisha_talks "Shibtu, you said that you observe stars? Is that true so?"
+    shibtu_talks "Yes, my lady. My father taught me how to observe the celestial omens, to know when comes spring and new year, and when seasons change. "
+    ahatabisha_talks "And so why do you do this? Is that what your father asks you to do? Who is your father, Shibtu?"
+    shibtu_talks "I just love doing this, my lady. There is something mystic in the celestial movements, something that charms me deeply." 
+    ahatabisha_talks "And then, your father is?"
+    shibtu_talks "Oh, forgive me, my lady. My father is Bel-aba-usur. He used to be the astronomer of Esagila temple."
+    ahatabisha_talks "Well, I shall have recognized myself the features of him in your face. That was only reasonable to assume that your father was an astronomer. I knew your father. And I know what happened to him though I do not know where he is now. "
+    shibtu_talks "My lady, I do not know either. "
+    ahatabisha_talks "He was a fine service to the temple and to the people of this city. If not him, I do not know if Esagila temple could keep the observations, compute the calendars and let people enjoy the festivities and do sacrifices. "
+    shibtu_talks "My lady, dare I ask you some more about my father?" 
+    ahatabisha_talks "Shibtu, not here and not now. Let me be short, I also have not that much time. Now you know me, and I am looking for a daughter to adopt. My position does not let me marry, and I am getting older and wish to have a child to care about. "
+    ahatabisha_talks "Shall I need help in my declining years, I wish to also rely on my adopted daughter." 
+    ahatabisha_talks "Of course, I do not expect her to be only a service to my gray hairs but I would supervise her in her training to be a priestess. I shall think that you, Shibtu, might now be not in the best position since your father is absent. 
+    ahatabisha_talks "Moreover, you seem to be a smart girl who might enjoy serving in a higher position. What would you say?"
+
 
     return
 
